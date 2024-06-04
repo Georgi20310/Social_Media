@@ -44,3 +44,17 @@ CREATE TABLE follows (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     UNIQUE(follower_id, followed_id)
 );
+
+CREATE TABLE roles (
+    role_id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    role_name VARCHAR(50) UNIQUE NOT NULL
+);
+
+CREATE TABLE user_roles (
+    user_role_id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    user_id INT,
+    FOREIGN KEY(user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    role_id INT,
+    FOREIGN KEY(role_id) REFERENCES roles(role_id) ON DELETE CASCADE,
+    UNIQUE(user_id, role_id)
+);
