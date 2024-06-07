@@ -6,10 +6,6 @@ CREATE INDEX idx_comments_content_prefix ON comments((LEFT(content, 10)));
 
 CREATE INDEX idx_users_username_prefix ON users((LEFT(username, 5)));
 
-CREATE INDEX idx_profiles_user_id ON profiles(user_id);
-
-CREATE INDEX idx_friends_user_date ON friends(user_id1, friendship_date);
-
 CREATE INDEX idx_posts_content_prefix ON posts((LEFT(content, 15)));
 
 CREATE INDEX idx_posts_user_content ON posts(user_id, content);
